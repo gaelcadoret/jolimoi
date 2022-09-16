@@ -10,8 +10,12 @@
 
 <form action="#" name="convert-form" id="convert-form">
     <div class="row d-flex">
-        <div><input type="number" name="userEntry" /></div>
+        <div><input type="number" name="userEntry" min="0" max="100" /></div>
         <div><button type="submit" id="submit-form-btn">Convertir</button></div>
+    </div>
+    <div class="row d-flex hidden" id="response-container">
+        <label for="response">Romain numerals version =></label>
+        <span class="response" id="response"></span>
     </div>
 </form>
 

@@ -3,26 +3,39 @@
  */
 
 const DEBUG = true;
-const API_DOMAIN_URL = "http://localhost:3000"
+const API_DOMAIN_URL = "http://localhost:8080"
 const convertForm = document.getElementById("convert-form");
 const submitBtn = document.getElementById("submit-form-btn");
+const responseDomNode = document.getElementById("response");
+const responseContainer = document.getElementById("response-container");
 
-const log = (msg) => DEBUG ? console.log(msg): null;
+const log = (key, msg) => DEBUG ? console.log(key, msg): null;
 
 log("app has been loaded.");
 log("convertForm", convertForm)
 
 const request = async (url, data) => {
-    return fetch(url, {
+    const response = await fetch(url, {
         method: "POST",
+        mode: "cors",
+        headers: {
+            'Content-Type': 'application/json'
+        },
         body: JSON.stringify(data),
     });
+
+    return response.json();
 }
 
-const convert = (num) => {
-    return request(`${API_DOMAIN_URL}/convertor`, {
+const convert = async (num) => {
+    return await request(`${API_DOMAIN_URL}/convertor`, {
         data: num,
     });
+};
+
+const showResponse = (txt) => {
+    responseDomNode.innerText = txt;
+    responseContainer.classList.remove("hidden");
 };
 
 const handleClick = (evt) => {
@@ -37,6 +50,8 @@ const handleClick = (evt) => {
     convert(num)
         .then((res) => {
             log("res", res);
+
+            showResponse(res.data || "Error");
         });
 };
 
