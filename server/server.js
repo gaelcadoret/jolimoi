@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 
-const convertor = require("./modules/convertor");
+const { convertorController } = require("./modules/convertor");
 
 const PORT = 8080;
 
@@ -83,7 +83,7 @@ app.post('/fact', addFact);
  *        parameters:
  *            - data: object
  */
-app.post('/convertor', convertor);
+app.post('/convertor', convertorController);
 
 let clients = [];
 let facts = [];

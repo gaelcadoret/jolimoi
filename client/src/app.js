@@ -51,7 +51,7 @@ const handleClick = (evt) => {
         .then((res) => {
             log("res", res);
 
-            showResponse(res.data || "Error");
+            showResponse(res.data || res.error);
         });
 };
 
