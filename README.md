@@ -1,6 +1,6 @@
 # JOLIMOI Conversion tool
 
-![Client example](https://github.com/gaelcadoret/jolimoi/tree/feat/sse-display-conversions/img/conversion-tool.png?raw=true)
+![Client example](https://github.com/gaelcadoret/jolimoi/blob/feat/sse-display-conversions/img/conversion-tool.png?raw=true)
 
 ## Start client
 `yarn start`
