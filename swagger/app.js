@@ -3,6 +3,7 @@ const app = express();
 const swaggerUi = require('swagger-ui-express');
 const swaggerJSDoc = require('swagger-jsdoc');
 
+const DOCUMENTATION_PORT = 3002;
 // const swaggerDocument = require('./swagger.json');
 //
 // app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
@@ -24,4 +25,6 @@ const options = {
 const swaggerSpec = swaggerJSDoc(options);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-app.listen(3002);
+app.listen(DOCUMENTATION_PORT, () => {
+    console.log(`Facts Events service listening at http://localhost:${DOCUMENTATION_PORT}`)
+});

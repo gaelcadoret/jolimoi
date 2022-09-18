@@ -9,10 +9,51 @@ const submitBtn = document.getElementById("submit-form-btn");
 const responseDomNode = document.getElementById("response");
 const responseContainer = document.getElementById("response-container");
 
+const NODE_LI = "li";
+const numbersDomNode = document.getElementById("serverData");
+
+const evtSource = new EventSource(`${API_DOMAIN_URL}/events`);
+
 const log = (key, msg) => DEBUG ? console.log(key, msg): null;
 
 log("app has been loaded.");
 log("convertForm", convertForm)
+
+/**
+ * @param {string} nodeType
+ * @param {number} dec - decimal number
+ * @param {string} roman - roman numerals
+ * @param {document} content
+ */
+const addElement = (nodeType, dec, roman) => {
+    const element = document.createElement(nodeType);
+    element.innerText = `${dec} => ${roman}`;
+
+    return element;
+}
+
+console.log("numbersDomNode", numbersDomNode)
+
+evtSource.onmessage = (event) => {
+    const data = JSON.parse(event.data);
+    console.log("New number received", data);
+
+    if (Array.isArray(data)) {
+        data.forEach(({decimal, roman}) => {
+            if ((typeof decimal === "number") && (typeof roman === "string")) {
+                const newElement = addElement(NODE_LI, decimal, roman);
+                numbersDomNode.appendChild(newElement);
+            }
+        });
+    } else {
+        const { decimal, roman } = data;
+
+        if ((typeof decimal === "number") && (typeof roman === "string")) {
+            const newElement = addElement(NODE_LI, decimal, roman);
+            numbersDomNode.appendChild(newElement);
+        }
+    }
+}
 
 const request = async (url, data) => {
     const response = await fetch(url, {

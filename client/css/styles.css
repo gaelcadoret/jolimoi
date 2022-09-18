@@ -3,6 +3,37 @@ label {
     margin-right: 0.5rem;
 }
 
+h1 {
+    font-size: 1.2rem;
+}
+
+.subTitle {
+    font-size: 0.7rem;
+    font-style: italic;
+    position: relative;
+    top: -16px;
+}
+
+.response {
+    font-style: italic;
+    font-weight: bold;
+    color: #009900;
+}
+
+ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+ul.list li {
+    list-style-type: none;
+    padding-left: 0.25rem;
+}
+
+li:nth-child(odd) {
+    background-color: lightgray;
+}
+
 .hidden {
     display: none !important;
 }

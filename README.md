@@ -14,3 +14,7 @@ Server is now listening http://localhost:8080 for API calls.
 `yarn docs`
 
 Then, go to http://localhost:3002/api-docs
+
+
+`curl -X POST  -H "Content-Type: application/json"  -d '{ "fruit": "Groseilles" }' -s http://localhost:8080/fact`
+`curl -X POST  -H "Content-Type: application/json"  -d '{ "fruit": "Pommes" }' -s http://localhost:8080/fact`
