@@ -9,6 +9,8 @@ const DOCUMENTATION_PORT = 3002;
 // app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 const swaggerDefinition = {
+    host: "http://localhost:8080",
+    basePath: '/',
     openapi: '3.0.0',
     info: {
         title: 'Express API for JOLIMOI',
@@ -17,7 +19,9 @@ const swaggerDefinition = {
 };
 
 const options = {
+    failOnErrors: true,
     swaggerDefinition,
+    explorer: true,
     // Paths to files containing OpenAPI definitions
     apis: ['./server/*.js'],
 };

@@ -14,14 +14,39 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/events', eventsHandler);
 
+
+
 /**
  * @swagger
  *
  * /convertor:
- *    post:
- *        description: convert a number into roman numerals
- *        parameters:
- *            - data: object
+ *   post:
+ *     description: convert a number into roman numerals
+ *     produces:
+ *      - application/json
+ *     parameters:
+ *      - name: body
+ *        description: Decimal number to be converted.
+ *        in: body
+ *        required: true
+ *        type: object
+ *        schema:
+ *          properties:
+ *            data:
+ *              type: string
+ *     responses:
+ *       200:
+ *         description: return message ok
+ *         schema:
+ *           properties:
+ *             success:
+ *               type: boolean
+ *             data:
+ *               type: string
+ *             timestamp:
+ *               type: timestamp
+ *       400:
+ *         description: bad request
  */
 app.post('/convertor', convertorController);
 
