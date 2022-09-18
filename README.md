@@ -16,3 +16,9 @@ Server is now listening http://localhost:8080 for API calls.
 `yarn docs`
 
 Then, go to http://localhost:3002/api-docs
+
+## Run tests
+`yarn test`
+
+## Run test coverage
+`yarn test:cov`
