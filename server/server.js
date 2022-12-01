@@ -38,13 +38,17 @@ app.get('/events', eventsHandler);
  *       200:
  *         description: return message ok
  *         schema:
+ *           type: object
  *           properties:
  *             success:
  *               type: boolean
+ *               description: response status
  *             data:
  *               type: string
+ *               description: response message
  *             timestamp:
  *               type: timestamp
+ *               description: response timestamp
  *       400:
  *         description: bad request
  */
