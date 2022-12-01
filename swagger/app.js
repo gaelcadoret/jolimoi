@@ -3,11 +3,14 @@ const app = express();
 const swaggerUi = require('swagger-ui-express');
 const swaggerJSDoc = require('swagger-jsdoc');
 
+const DOCUMENTATION_PORT = 3002;
 // const swaggerDocument = require('./swagger.json');
 //
 // app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 const swaggerDefinition = {
+    host: "http://localhost:8080",
+    basePath: '/',
     openapi: '3.0.0',
     info: {
         title: 'Express API for JOLIMOI',
@@ -16,7 +19,9 @@ const swaggerDefinition = {
 };
 
 const options = {
+    failOnErrors: true,
     swaggerDefinition,
+    explorer: true,
     // Paths to files containing OpenAPI definitions
     apis: ['./server/*.js'],
 };
@@ -24,4 +29,6 @@ const options = {
 const swaggerSpec = swaggerJSDoc(options);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-app.listen(3002);
+app.listen(DOCUMENTATION_PORT, () => {
+    console.log(`Facts Events service listening at http://localhost:${DOCUMENTATION_PORT}`)
+});

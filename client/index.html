@@ -14,10 +14,19 @@
         <div><button type="submit" id="submit-form-btn">Convertir</button></div>
     </div>
     <div class="row d-flex hidden" id="response-container">
-        <label for="response">Romain numerals version =></label>
         <span class="response" id="response"></span>
     </div>
 </form>
+
+<div>
+    <h1>Data sent by the server (SSE)</h1>
+    <span class="subTitle">
+        Try to convert several numbers to get conversion history. Then, try to refresh the page, you'll be able to see that
+        the server is pushing the data when the client is ready.
+    </span>
+
+    <ul class="list" id="serverData"></ul>
+</div>
 
 </body>
 </html>

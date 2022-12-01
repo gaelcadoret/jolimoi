@@ -1,7 +1,8 @@
-const convertorController = require("./convertorController");
+const { convertorController, eventsHandler} = require("./convertorController");
 
 module.exports = {
     convertorController,
+    eventsHandler,
 };
 
 
